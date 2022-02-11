@@ -1,0 +1,3 @@
+[submodule "model/myQuad"]
+	path = model/myQuad
+	url = https://github.com/vxj9800/myQuad
