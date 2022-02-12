@@ -1,20 +1,25 @@
 import os
 from launch import LaunchDescription
 from launch.actions import IncludeLaunchDescription
+from launch.actions import ExecuteProcess
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
 
 
 def generate_launch_description():
-    # Find path to gazebo_ros
-    pkgGazeboROS = FindPackageShare(package="gazebo_ros").find("gazebo_ros")
+    # Find the path of the share folder of current package
+    sharePath = FindPackageShare(package="drone_controller").find("drone_controller")
+
+    # Add path to the gazebo models to the GAZEBO_MODEL_PATH environment
+    os.environ["GAZEBO_MODEL_PATH"] = os.path.join(sharePath, "gazebo", "models")
+
+    # Define path to the world file
+    worldPath = os.path.join(sharePath, "gazebo", "worlds", "classic.world")
 
     # Start gazebo
-    startGazebo = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            os.path.join(pkgGazeboROS, "launch", "gazebo.launch.py")
-        )
+    startGazebo = ExecuteProcess(
+        cmd=["gazebo", "--verbose", worldPath, "-u"], output="screen"
     )
 
     # Start compControlTorque node
