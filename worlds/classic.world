@@ -11,6 +11,7 @@
     </include>
     <include>
       <uri>model://myQuad</uri>
+      <pose> 0 0 1 0 0 0</pose>
     </include>
   </world>
 </sdf>
