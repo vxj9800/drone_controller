@@ -1,3 +1,6 @@
+#ifndef DRONE_COLTROLLER__COMP_CONTROL_TORQUE_HPP
+#define DRONE_COLTROLLER__COMP_CONTROL_TORQUE_HPP
+
 // Include necessary C/C++ headers
 #include <functional>
 #include <chrono>
@@ -17,3 +20,5 @@ class compControlTorque : public rclcpp::Node
 	rclcpp::TimerBase::SharedPtr timer_;
 	void callbackFun();
 };
+
+#endif // #ifndef DRONE_COLTROLLER__COMP_CONTROL_TORQUE_HPP
