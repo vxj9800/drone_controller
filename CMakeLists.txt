@@ -8,7 +8,7 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
-find_package(geometry_msgs REQUIRED)
+find_package(std_msgs REQUIRED)
 
 add_executable(compControlTorque src/compControlTorque.cpp)
 target_include_directories(compControlTorque PUBLIC
@@ -18,7 +18,7 @@ target_compile_features(compControlTorque PUBLIC c_std_99 cxx_std_17)  # Require
 ament_target_dependencies(
 	compControlTorque
 	"rclcpp"
-	"geometry_msgs"
+	"std_msgs"
 )
 
 install(TARGETS compControlTorque

@@ -11,7 +11,7 @@
 
 	<!-- Add dependencies -->
 	<depend>rclcpp</depend>
-	<depend>geometry_msgs</depend>
+	<depend>std_msgs</depend>
 
 	<!-- Add runtime dependencies -->
 	<exec_depend>ros2launch</exec_depend>

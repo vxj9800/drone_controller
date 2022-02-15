@@ -6,8 +6,8 @@
 #include <chrono>
 
 // Include ROS related headers
-#include "rclcpp/rclcpp.hpp"
-#include "geometry_msgs/msg/vector3.hpp"
+#include <rclcpp/rclcpp.hpp>
+#include <std_msgs/msg/float64_multi_array.hpp>
 
 class compControlTorque : public rclcpp::Node
 {
@@ -15,8 +15,8 @@ class compControlTorque : public rclcpp::Node
 	compControlTorque();
 
 	protected:
-	double torqueVals_[3];
-	rclcpp::Publisher<geometry_msgs::msg::Vector3>::SharedPtr publisher_;
+	double torqueVals_[4];
+	rclcpp::Publisher<std_msgs::msg::Float64MultiArray>::SharedPtr publisher_;
 	rclcpp::TimerBase::SharedPtr timer_;
 	void callbackFun();
 };

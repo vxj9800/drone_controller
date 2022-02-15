@@ -20,9 +20,7 @@ def generate_launch_description():
 
     # Start compControlTorque node
     startCompControlTorque = Node(
-        package="drone_controller",
-        executable="compControlTorque",
-        name="torque",
+        package="drone_controller", executable="compControlTorque"
     )
 
     # Create LaunchDescription object
