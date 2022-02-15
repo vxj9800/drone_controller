@@ -9,17 +9,13 @@ from launch_ros.substitutions import FindPackageShare
 
 def generate_launch_description():
     # Find the path of the share folder of current package
-    sharePath = FindPackageShare(package="drone_controller").find("drone_controller")
+    quadSharePath = FindPackageShare(package="my_quad").find("my_quad")
 
-    # Add path to the gazebo models to the GAZEBO_MODEL_PATH environment
-    os.environ["GAZEBO_MODEL_PATH"] = os.path.join(sharePath, "gazebo", "models")
-
-    # Define path to the world file
-    worldPath = os.path.join(sharePath, "gazebo", "worlds", "classic.world")
-
-    # Start gazebo
-    startGazebo = ExecuteProcess(
-        cmd=["gazebo", "--verbose", worldPath, "-u"], output="screen"
+    # Include the launch file of my_quad package
+    runQuadSim = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(quadSharePath, "launch", "runGazeboSim.launch.py")
+        )
     )
 
     # Start compControlTorque node
@@ -33,7 +29,7 @@ def generate_launch_description():
     ld = LaunchDescription()
 
     # Add all actions to the LaunchDescription object
-    ld.add_action(startGazebo)
+    ld.add_action(runQuadSim)
     ld.add_action(startCompControlTorque)
 
     return ld
