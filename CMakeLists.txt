@@ -9,6 +9,7 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(sensor_msgs REQUIRED)
 
 add_executable(compControlTorque src/compControlTorque.cpp)
 target_include_directories(compControlTorque PUBLIC
@@ -19,6 +20,7 @@ ament_target_dependencies(
 	compControlTorque
 	"rclcpp"
 	"std_msgs"
+	"sensor_msgs"
 )
 
 install(TARGETS compControlTorque

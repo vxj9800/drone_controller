@@ -12,6 +12,7 @@
 	<!-- Add dependencies -->
 	<depend>rclcpp</depend>
 	<depend>std_msgs</depend>
+	<depend>sensor_msgs</depend>
 
 	<!-- Add runtime dependencies -->
 	<exec_depend>ros2launch</exec_depend>
